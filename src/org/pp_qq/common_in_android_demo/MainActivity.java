@@ -7,10 +7,20 @@ import android.view.MenuItem;
 
 public class MainActivity extends Activity {
 
+	static  {
+		
+		System.loadLibrary("gnustl_shared");
+		
+		System.loadLibrary("rrid_test");
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		NativeTest.RRIDTest();
+		return ;
 	}
 
 	@Override
