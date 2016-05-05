@@ -1,16 +1,5 @@
 LOCAL_PATH := $(call my-dir)
 
-pp_qq_common_common_c_includes := $(LOCAL_PATH)/lib/common/src
-pp_qq_common_cipher_c_includes := $(LOCAL_PATH)/lib/common/src
-pp_qq_common_digest_c_includes := $(LOCAL_PATH)/lib/common/src
-pp_qq_common_exception_c_includes := $(LOCAL_PATH)/lib/common/src
-pp_qq_common_execute_time_get_c_includes := $(LOCAL_PATH)/lib/common/src
-pp_qq_common_formatter_c_includes := $(LOCAL_PATH)/lib/common/src
-pp_qq_common_glibc_cxx_wrap_c_includes := $(LOCAL_PATH)/lib/common/src
-pp_qq_common_hex_coding_c_includes := $(LOCAL_PATH)/lib/common/src
-pp_qq_common_log_c_includes := $(LOCAL_PATH)/lib/common/src
-pp_qq_common_rrid_c_includes := $(LOCAL_PATH)/lib/common/src
-pp_qq_common_string_c_includes := $(LOCAL_PATH)/lib/common/src
 
 include $(shell find $(LOCAL_PATH)/ -mindepth 2  -name 'Android.mk' -type f)
 
