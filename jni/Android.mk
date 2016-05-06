@@ -1,50 +1,46 @@
 LOCAL_PATH := $(call my-dir)
 
+include $(LOCAL_PATH)/lib/nettle/Android.mk
+include $(LOCAL_PATH)/lib/common/src/rrid/Android.mk
+include $(LOCAL_PATH)/lib/common/src/hex_coding/Android.mk
+include $(LOCAL_PATH)/lib/common/src/common/Android.mk
+include $(LOCAL_PATH)/lib/common/src/execute_time_get/Android.mk
+include $(LOCAL_PATH)/lib/common/src/glibc_cxx_wrap/Android.mk
+include $(LOCAL_PATH)/lib/common/src/cipher/Android.mk
+include $(LOCAL_PATH)/lib/common/src/log/Android.mk
+include $(LOCAL_PATH)/lib/common/src/string/Android.mk
+include $(LOCAL_PATH)/lib/common/src/exception/Android.mk
+include $(LOCAL_PATH)/lib/common/src/digest/Android.mk
+include $(LOCAL_PATH)/lib/common/src/formatter/Android.mk
 
-include $(shell find $(LOCAL_PATH)/ -mindepth 2  -name 'Android.mk' -type f)
+
+LOCAL_PATH_BAK := $(LOCAL_PATH)
+$(call import-module,third_party/googletest)
+LOCAL_PATH := $(LOCAL_PATH_BAK)
 
 include $(CLEAR_VARS)
-
-LOCAL_C_INCLUDES :=  $(LOCAL_PATH)/lib/common/src
 
 LOCAL_MODULE := common_test
-LOCAL_SRC_FILES := common_test.cc
 
-LOCAL_STATIC_LIBRARIES := pp_qq_common_common
+
+LOCAL_WHOLE_STATIC_LIBRARIES := nettle \
+	pp_qq_common_cipher_test	\
+	pp_qq_common_hex_coding_test \
+	pp_qq_common_execute_time_get_test	\
+	pp_qq_common_digest_test 	\
+	pp_qq_common_string_test 	\
+	pp_qq_common_rrid_test	\
+	pp_qq_common_common_test	\
+	pp_qq_common_glibc_cxx_wrap_test	\
+	pp_qq_common_log_test	\
+	pp_qq_common_exception_test	\
+	pp_qq_common_formatter_test	\
+	googletest_main
 
 LOCAL_LDLIBS := -llog
 
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_EXECUTABLE)
 
-include $(CLEAR_VARS)
-LOCAL_C_INCLUDES :=  $(LOCAL_PATH)/lib/common/src
-
-LOCAL_MODULE := formatter_test
-LOCAL_SRC_FILES := formatter_test.cc
-LOCAL_STATIC_LIBRARIES := pp_qq_common_string  pp_qq_common_formatter
-LOCAL_LDLIBS := -llog
-
-include $(BUILD_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_C_INCLUDES :=  $(LOCAL_PATH)/lib/common/src
-
-LOCAL_MODULE := hex_coding_test
-LOCAL_SRC_FILES := hex_coding_test.cc
-LOCAL_STATIC_LIBRARIES := pp_qq_common_hex_coding pp_qq_common_string
-LOCAL_LDLIBS := -llog
-
-include $(BUILD_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-
-LOCAL_MODULE := rrid_test
-LOCAL_SRC_FILES := rrid_test.cc
-LOCAL_LDLIBS := -llog
-LOCAL_STATIC_LIBRARIES := pp_qq_common_rrid
-LOCAL_C_INCLUDES :=  $(LOCAL_PATH)/lib/common/src
-
-include $(BUILD_SHARED_LIBRARY)
 
 
 

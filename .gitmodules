@@ -1,3 +1,6 @@
 [submodule "jni/lib/common"]
 	path = jni/lib/common
 	url = https://github.com/pp-qq/common.git
+[submodule "jni/lib/nettle"]
+	path = jni/lib/nettle
+	url = https://github.com/pp-qq/nettle_android.git
